@@ -15,7 +15,7 @@
 
 
 \title{Group Design Project: Formal Report}
-\author{}
+\author{Evolution Acoustics: Alex Booth}
 
 
 
@@ -23,6 +23,12 @@
     \maketitle
 
     \section{Introduction}
+
+    \section{Location case study}
+        Choosing a real-life location for our project was a conscious choice for our group.
+        We decided that instead of making up prospective acoustical and spatial challenges, working around strict environments that cannot be changed would have greater realism, and would enable us to spend a greater amount of time on finding and developing solutions to the problems these strict constraints presented us.
+        A plot of land was chosen: 160 Graham Road, Hackney, London.
+        It is adjacent to residential areas, two train lines, and a road, and thus presented us with an ample supply of problems to plan for and overcome, especially the noise created by the road and the trainlines.
         
     \section{Background and Theory Basis}
         \subsection{Introduction}
@@ -74,8 +80,80 @@
 
 
     \section{Interior Acoustic Design}
-        The acoustic performance of each room was designed to a specification such that each room would be fit for it's respective purpose.
-        The live rooms must be 
+        When designing rooms for optimal interior acoustic performance, we must take into account the frequency-based and reverberant performance of the room.
+        \subsection{Reverberance}
+            The reverberance of a room is quantified in the form of an $RT_{60}$.
+            The value of a room's $RT_{60}$ defines the time taken for an acoustic impulse's (a short, fast transient, loud sound) SPL to decay by 60dB.
+            To calculate the RT60 of a cuboid room, Sabine's equation is most often used:
+            \begin{equation}\label{sabines}
+                RT_{60} = \frac{0.161 V}{A}
+            \end{equation}
+            Where $V$ is the volume of the room, and $A$ is the total absorption of the walls, ceiling and floor.
+            As different rooms within the complex have intended use cases, they will require a variety of $RT_{60}$ values, depending on said use case.
+            For example, as the live room needs to have a natural, projecting and reverberant sound such that large ensembles blend together and a teacher can speak to the entire room with ease, it needs to have a larger $RT_{60}$ than other rooms.
+            Comparatively, the control rooms and isolation rooms will have a much lower $RT_{60}$.
+            The values of $RT_{60}$ for each room are tabulated in Fig.\ref{RT60}
+            Rearranging Eq.\ref{sabines}, we can solve for each room's $A$:
+            \begin{equation}
+                A = \frac{0.161V}{RT60} 
+            \end{equation}
+            \begin{figure}
+                \includegraphics[scale=0.45]{resources/RT60.png}
+                \caption{Table of target RT60s and total absorption for each room}
+                \label{RT60}
+                \centering
+            \end{figure}
+            Taking these target total absorptions, we then calculated the required contribution from each surface to the total absorption of each room using an Excel spreadsheet.
+            To find the contribution of a surface, the absorption coefficient of it's material must be multiplied with it's surface area.
+            Different construction materials have different absorption coefficients, and as such the material of each surface must be chosen in order to dial in the correct contribution to total absorption from the surface.
+            The materials chosen, absorption contributions and total absorption of each room are tabulated in Fig.\ref{reverb}.
+            \begin{figure*}
+                \includegraphics[scale=0.4]{resources/reverb.png}
+                \caption{Table detailing room construction to achieve room's target $RT_{60}$}
+                \label{reverb}
+                \centering
+            \end{figure*}
+        \subsection{Room modes}
+        Cuboid rooms can facilitate standing waves, which can lead to problems with uneven frequency response throughout the room, and thus an uneven listening experience.
+        This uneven characteristic is caused by the nodes and anti-nodes of the standing waves not moving in space; the locations of the nodes are known as 'room modes'.
+        A standing wave is a wave travelling through a medium, in this case the string, oscillating in time.
+        However, due to the distance between the boundary conditions being an integer multiple of the incident wavelength, after reflecting when reaching the boundary conditions of the medium, it appears to not oscillate in time, due to the constructive or destructive interference of the incident and reflected wave \cite{PHYS15}.
+        In order to predict the frequencies at which standing waves will appear, the X-Y-Z dimensions of the room are taken as integer multiples / factors of the standing wave frequencies.
+        Thus Eq.\ref{standing} can be solved for $f_n$, where $n$ is the harmonic number of the standing wave, $c=343\si{\meter\per\second}$ is the speed of sound in air, and $L$ is the length of the dimension in question.
+        \begin{equation}\label{standing}
+            f_n = \frac{c}{2L}n
+        \end{equation}
+        This equation will only solve for axial room modes; an acoustic wave in three-dimensional dimensional space does not only reflect back unto it's self, but also at various angles of reflection.
+        These angular second and third reflections of an axial room mode are known as tangential and oblique room modes, as shown in Fig.\ref{oblique}.
+        \begin{figure}[H]
+            \includegraphics[scale=0.375]{resources/oblique.jpg}
+            \caption{An illustration of three types of room mode \cite{MODES}}
+            \label{oblique}
+            \centering
+        \end{figure}
+        Using Excel and Eq.\ref{standing} frequency values for axial room modes on the X-Y-Z axis up to the 9\textsuperscript{th} harmonic were calculated; the full tabulated results can be found in Fig.\ref{modes}
+        \begin{figure*}[h]
+            \includegraphics[scale=0.6]{resources/modes.png}
+            \caption{Table detailing axial room modes for each room}
+            \label{modes}
+            \centering
+        \end{figure*}
+        We then moved on to the issue of dealing with the found room modes.
+        The room modes with the greatest impact on the even listening field are towards the lower end of the frequency spectrum; the number of nodes in a standing wave of 5cm wavelength in a room 9m wide makes it's effect inconsequential, whereas a wave with a 4.5m wavelength will only two locations in the room where it reaches it's true peak amplitude.
+        In order to prevent these frequencies becoming standing waves, we must target them for absorption.
+        Resonant membrane absorbers are very useful in this context - they provide relatively precise targeting and attenuation of problematic frequencies.
+        Eq.\ref{membrane} formulates how to solve for the depth and mass of a membrane absorber to target a certain frequency, where $d$ is depth, $m$ is mass per meter square, and $f$ is frequency:
+        \begin{equation}\label{membrane}
+            f = \frac{60}{/sqrt{md}}
+        \end{equation}
+        Setting $m=1\si{\kilogram\per\meter\squared}$ for ease of production allowed us to simply solve for a $d$ that would cause the membrane absorber to target the first room modes of each room:
+        \begin{figure}[H]
+            \includegraphics[scale=0.7]{resources/membrane.png}
+            \caption{Table detailing the depths of membrane absorbers used to target first harmonic room modes}
+            \label{membranetable}
+            \centering
+        \end{figure}
+
 
     \section{Noise Insulation}
         The most effective method for preventing noise from entering a room is designing the structure of the room such that the vibrations travelling through solids and sound waves causing said unwanted noise are prevented from entering the structure.
@@ -84,7 +162,7 @@
         This construction and design, whilst incredibly effective at reducing outside noise from coming into a room, is very costly and restrictive.
         Instead, our studio was acoustically designed with the aim of reducing outside noise, whilst still providing a familiar built environment.
         Elements we considered included: Absorption, damping, decoupling and distance.
-        Absorption of unwanted noise can be achieved by placing acoustic insulation between each wall section, as illustrated in Fig.\ref{wallFiller}
+        Absorption of unwanted noise can be achieved by placing acoustic insulation between each wall section, as illustrated in Fig.\ref{wallFiller}.
         \begin{figure}[H]
             \includegraphics[scale = 0.6]{resources/wallFiller.png}
             \caption{Filling wall partitions with acoustic insulation \cite{UCSC}}
@@ -95,11 +173,7 @@
 
     \section{Studio Layout}
 
-    \section{Location case study}
-        Choosing a real-life location for our project was a conscious choice for our group.
-        We decided that instead of making up prospective acoustical and spatial challenges, working around strict environments that cannot be changed would have greater realism, and would enable us to spend a greater amount of time on finding and developing solutions to the problems these strict constraints presented us.
-        A plot of land was chosen: 160 Graham Road, Hackney, London.
-        It is adjacent to residential areas, two train lines, and a road, and thus presented us with an ample supply of problems to plan for and overcome, especially the noise created by the road and the trainlines.
+    
 
 
     \section{Conclusions}
