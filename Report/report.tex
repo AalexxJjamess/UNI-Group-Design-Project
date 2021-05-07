@@ -21,18 +21,44 @@
 
 \begin{document}
     \maketitle
-
+    \begin{abstract}
+        \it
+        {
+            This report details the design considerations and process for a detached multipurpose recording studio.
+            Considerations for the construction's dimensions and materials are detailed, as well as steps to correct any issues that may arise in the acoustic environment.
+            A case study of a real life location provides problems that are explored in the report.
+            A conclusion section analyses the strengths and weaknesses of the design.
+            Instead of a single adopted design theories and principles section, literature and theory will be discussed where applicable, alongside results and design principles.
+        } 
+    \end{abstract}
     \section{Introduction}
+    The aim of this report is to design a music studio space from the ground-up for educational purposes.
+    The building and the spaces within were designed by following a criteria, that the project manager has provided. 
+    The manager's criteria is as follows:
+    \begin{enumerate}
+        \item Detached recording house comprising of 6 varied studios.
+        \item Next to a busy "A" road.
+        \item 6 live rooms, 4 control rooms and functional spaces such as storage rooms, reception area, technician's office and practice rooms.
+        \item Constructed using prefabricated modular building technologies. Should be sub-contracted to a suitable manufacturer. Prefabricated building should meet the reasonable acoustic requirements.
+    \end{enumerate}
 
     \section{Location case study}
         Choosing a real-life location for our project was a conscious choice for our group.
         We decided that instead of making up prospective acoustical and spatial challenges, working around strict environments that cannot be changed would have greater realism, and would enable us to spend a greater amount of time on finding and developing solutions to the problems these strict constraints presented us.
         A plot of land was chosen: 160 Graham Road, Hackney, London.
-        It is adjacent to residential areas, two train lines, and a road, and thus presented us with an ample supply of problems to plan for and overcome, especially the noise created by the road and the trainlines.
-        
+        It is adjacent to residential areas, two train lines, and a busy road, and thus presented us with an ample supply of problems to plan for and overcome, especially the noise created by the road and the trainlines.
+        \begin{figure*}[ht]
+            \centering
+            \centerline{\includegraphics[scale=0.5]{resources/160 Graham Road.png}}
+            \caption{Satellite Image of 160 Graham Road, E8}
+            \label{graham}
+        \end{figure*}
     \section{Background and Theory Basis}
-        \subsection{Introduction}
-            For a building to function as both a music studio and as an educational facility, special considerations must be taken.
+        \subsection{Necessary Assumptions}
+            For ease of design, we must first make some assumptions.
+            Firstly, we must assume that any planning permission will be granted; the case study takes place in an inner London borough, so the planning permission process may be arduous to map out.
+            For the sake of brevity, it was decided to omit this consideration.
+            We assume the speed of sound in air $c=343$, the threshold of human hearing $p_{ref}$ to be $20*10^{-6}\si{\pascal}$.
         \subsection{Educational facilities}
             Any building that facilitates or is used for educational purposes must comply to the education building regulations specified by the government.
             These specifications are laid out in Building Bulletin 93 (BB93): Acoustic design of schools - performance standards.
@@ -52,8 +78,8 @@
 
         \subsection{Music and Recording Facilities}
             Mainstream music education at a secondary level primarily focuses on basic music theory of rhythm, timbre and tone, along with basic music technology requirements.
-            In the live room, large ensemble performances and lecture-style teaching can take place, whilst students wishing to practice any instruments can use the iso and control rooms to be isolated from the noise of the live room, and vice versa for the students in the live room.
-            For later years of education, the studio will be able to function as an excellent teaching environment for students of sound recording techniques and studio production, with three separate control rooms and one mastering room all equipped such that they can all be used for mixing and mastering.
+            In the live room, large performances and lectures can take place, whilst students wishing to practice any instruments can use the iso and control rooms to be isolated from the noise of the live room, and vice versa for the students in the live room.
+            For later years of education, the studio will be able to function as an excellent teaching environment for students of sound recording techniques and studio production, with three separate control rooms and one mastering room all equipped such that they can all be used for varied purposes.
 
     \section{Building Layout}
 
@@ -71,14 +97,8 @@
         It is important to consider the AV-over-IP networking technology used by the studio; it allows for fluid redirecting of the signal chain in a recording environment.
         For example, the live room can be also be used as a control room for a recording in iso room 3, with minimal adjustment to the hardware present in either room.
         All that may need to be changed is the software patching of the AV-over-IP.
-        This further allows any student to become proficient in using AV-over-IP technology, a fast advancing technology in the modern studio environment.
-        
-    \section{Noise Criteria}
-        Unwanted noise both from within the studio and from without is an issue of great consideration for recording studios.
-        A potentially perfect take can be ruined by microphone bleed of a truck passing by or an underground train shaking the floor.
-        
-
-
+        This further allows any student to become proficient in using AV-over-IP technology, a fast advancing technology in the modern studio.
+        \newpage
     \section{Interior Acoustic Design}
         \subsection{Introduction}
             When designing rooms for optimal interior acoustic performance, we must take into account the frequency-based and reverberant performance of the room.
@@ -98,7 +118,7 @@
             \begin{equation}
                 A = \frac{0.161V}{RT60} 
             \end{equation}
-            \begin{figure}
+            \begin{figure}[H]
                 \centering
                 \includegraphics[scale=0.48]{resources/RT60.png}
                 \caption{Table of target RT60s and total absorption for each room}
@@ -115,6 +135,22 @@
                 \centering
             \end{figure*}
         \subsection{Room modes}
+        Room modes are a common problem in sensitive acoustic environments, and thus there is a great deal of research and literature regarding their suppression.
+        Specifically designing the dimensions of rooms, and the proportions between them, to certain values helps target and suppress common room modes.
+        The optimal methodology of determining room proportions is described in \cite{Cox}. With the help of an computer algorithm, the proportions that produce the flattest modal frequency response can be found using this method.
+        For this project, the room proportions were determined according to the ratios obtained by Eq.\ref{ratios}
+        \begin{equation}\label{ratios}
+            f = \frac{c}{2}\sqrt{(\frac{n_x}{L_x})^2+(\frac{n_y}{L_y})^2+(\frac{n_z}{L_z})^2}
+        \end{equation}
+        and then the room modes were calculated in order to take acoustic treatment measures.
+        There are several previous methods developed by different acousticians such as Bolt\cite{Bolt} and Gilford\cite{Gilford}.
+        The ratios in Fig.\ref{bolty}, which use Bolt's method, was used for the small rooms in the design.
+        \begin{figure}[H]
+            \centering
+            \includegraphics[scale=0.5]{resources/modey.png}
+            \caption{Our chart of acceptable proportions}
+            \label{bolty}
+        \end{figure}
         Cuboid rooms can facilitate standing waves, which can lead to problems with uneven frequency response throughout the room, and thus an uneven listening experience.
         This uneven characteristic is caused by the nodes and anti-nodes of the standing waves not moving in space; the locations of the nodes are known as 'room modes'.
         A standing wave is a wave travelling through a medium, in this case the air, oscillating in time.
@@ -147,7 +183,7 @@
         \begin{equation}\label{membrane}
             f = \frac{60}{\sqrt{md}}
         \end{equation}
-        Setting $m=1\si{\kilogram\per\meter\squared}$ for ease of production allowed us to simply solve for a $d$ that would cause the membrane absorber to target the first room modes of each room:
+        Setting $m=1\si{\kilogram\per\meter\squared}$ for ease of production allowed us to simply solve for a $d$ that would cause the membrane absorber to target the first room modes of each room
         \begin{figure}[H]
             \centering
             \includegraphics[scale=0.7]{resources/membrane.png}
@@ -155,13 +191,16 @@
             \label{membranetable}
         \end{figure}
 
-        \newpage
-
     \section{Noise Insulation}
         \subsection{Introduction}
             'Noise' can be characterized as any unpleasant or unwanted sound.
             Typical sources of noise in the general built environment can include road traffic noise, ground vibrations from passing trains, electrical plant noise, and airplanes passing overhead.
             It is possible, and highly likely in a recording studio environment, that the sound that one person thinks as desirable or pleasant, to be considered an extreme nuisance by another in the building.
+            Unwanted noise both from within the studio and from without is an issue of great consideration for recording studios.
+            A potentially perfect take can be ruined by microphone bleed of a truck passing by or an underground train shaking the floor.
+            Noise reduction (NR) curves dictate the maximum acceptable noise level in a room over the audible frequency spectrum.
+            Different NR number indicate different acceptable levels of noise.
+            As the studio is a particularly sensitive acoustic environment, a strict NR number of NR10 was chosen.
             
         \subsection{Sound Reduction Index}
             Sound reduction index (SRI) measures the ratio at which sound waves are attenuated upon transmission through a solid body \cite{REDBOOK}.
@@ -170,6 +209,7 @@
                 SRI = 10\log{\frac{W_s}{W_r}}
             \end{equation}
             Sound reduction through a solid body is not constant across all frequencies.
+            Taking into account the chosen NR10, and solving for SRI, we could calculate SRIs for each octave band.
             Using MATLAB, SRI values across the frequency spectrum were calculated and plotted for an outside-to-inside and inside-to-inside sound transmission, as shown in Figs.\ref{MATLAB1}\&\ref{MATLAB2}:
             \begin{figure}[H]
                 \centering
@@ -183,7 +223,6 @@
                 \caption{Outside-to-inside SRI over frequency}
                 \label{MATLAB2}
             \end{figure}
-
 
         \subsection{Methods of Insulation}
             The most effective method for preventing noise from entering a room is designing the structure of the room such that the vibrations travelling through solids and sound waves causing said unwanted noise are prevented from entering the structure.
@@ -208,13 +247,30 @@
             \end{figure}
 
     \section{Studio Layout}
-
-    
+            Each studio is equipped with modern, state-of-the-art equipment, in a modular fashion such that they can be easily tweaked and adjusted.
+            As previously mentioned, AV-over-IP is used to interconnect equipment between every room.
+            To elaborate: Audinate's Dante system is used, along with Focusrite RedNet Dante networking switches.
+            Each RedNet acts as a terminal to connect a piece of digital equipment to the Dante network.
+            Interconnections between devices are made using Cat5 cables, of various custom lengths to provide clean cable runs.
+            Room for extra connections are to be kept free on every RedNet, such that a student or member of staff may make extra interconnections as they wish.
+            A comprehensive network diagram was made, shown in Fig.\ref{network}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale=0.2]{resources/network.png}
+                \caption{Network diagram for the studios}
+                \label{network}
+            \end{figure}
+            A seen in Fig.\ref{network} there are also DigiLink and USB connectivity available.
 
 
     \section{Conclusions}
+        In conclusion, the acoustic considerations for each room have been thoroughly considered.
+        However, the impact of suggested noise insulation measures, for example the spring-based supports, were not explored or investigated.
+        Furthermore, SRIs were only found for two solid barriers, and whilst they may have given a good indication of the performance of all the solid barriers and walls, they do not illustrate their performance for certain.
+        As such further investigation in to the SRI performance between every separate would have served to guarantee the prevention of any noise problems.
+        Also, whilst porous absorbers are suggested to correct total absorption errors illustrated in Fig.\ref{reverb}, no explanation was given as to the type of porous absorber suggested nor the frequency performance of said absorbers.
+        Research in to local council requirements and utility costs would have served to improve the detail of the case study.
 
     \bibliographystyle{plain}
     \bibliography{theBib}
-
 \end{document}
