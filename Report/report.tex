@@ -41,10 +41,10 @@
             In BB93, a table of appropriate $L_{AEQ}$ values are given for various classrooms.
             In this context, only the music rooms and common rooms entries are relevant.
             \begin{figure*}
+                \centering
                 \centerline{\includegraphics[scale = 1]{resources/BB93.png}}
                 \caption{The tabulated $L_{AEQ}$ requirements of an educational environment}
                 \label{BB93}
-                \centering
             \end{figure*}
             In Fig.\ref{BB93} it can be seen that classrooms and general teaching rooms have a matching ambient noise requirement to lecture rooms.
             The live room in the studio complex can function not only as a live room for large ensemble recordings but also as a class / lecture room.
@@ -59,10 +59,10 @@
 
         The floor plan of the envisioned building is illustrated in Fig.\ref{floorplan}:
         \begin{figure*}
+            \centering
             \centerline{\includegraphics[scale = 0.8]{resources/floorplan.png}}
             \caption{The floor plan of the music educational facility}
             \label{floorplan}
-            \centering
         \end{figure*}
         With only one regular point of entry and exit, any entrances or exits made by students or staff can be monitored, such that issues with missing equipment or safeguarding concerns can be easily managed.
         Studio A has a transparent viewport into the live room.
@@ -80,7 +80,8 @@
 
 
     \section{Interior Acoustic Design}
-        When designing rooms for optimal interior acoustic performance, we must take into account the frequency-based and reverberant performance of the room.
+        \subsection{Introduction}
+            When designing rooms for optimal interior acoustic performance, we must take into account the frequency-based and reverberant performance of the room.
         \subsection{Reverberance}
             The reverberance of a room is quantified in the form of an $RT_{60}$.
             The value of a room's $RT_{60}$ defines the time taken for an acoustic impulse's (a short, fast transient, loud sound) SPL to decay by 60dB.
@@ -98,10 +99,10 @@
                 A = \frac{0.161V}{RT60} 
             \end{equation}
             \begin{figure}
-                \includegraphics[scale=0.45]{resources/RT60.png}
+                \centering
+                \includegraphics[scale=0.48]{resources/RT60.png}
                 \caption{Table of target RT60s and total absorption for each room}
                 \label{RT60}
-                \centering
             \end{figure}
             Taking these target total absorptions, we then calculated the required contribution from each surface to the total absorption of each room using an Excel spreadsheet.
             To find the contribution of a surface, the absorption coefficient of it's material must be multiplied with it's surface area.
@@ -116,7 +117,7 @@
         \subsection{Room modes}
         Cuboid rooms can facilitate standing waves, which can lead to problems with uneven frequency response throughout the room, and thus an uneven listening experience.
         This uneven characteristic is caused by the nodes and anti-nodes of the standing waves not moving in space; the locations of the nodes are known as 'room modes'.
-        A standing wave is a wave travelling through a medium, in this case the string, oscillating in time.
+        A standing wave is a wave travelling through a medium, in this case the air, oscillating in time.
         However, due to the distance between the boundary conditions being an integer multiple of the incident wavelength, after reflecting when reaching the boundary conditions of the medium, it appears to not oscillate in time, due to the constructive or destructive interference of the incident and reflected wave \cite{PHYS15}.
         In order to predict the frequencies at which standing waves will appear, the X-Y-Z dimensions of the room are taken as integer multiples / factors of the standing wave frequencies.
         Thus Eq.\ref{standing} can be solved for $f_n$, where $n$ is the harmonic number of the standing wave, $c=343\si{\meter\per\second}$ is the speed of sound in air, and $L$ is the length of the dimension in question.
@@ -126,17 +127,17 @@
         This equation will only solve for axial room modes; an acoustic wave in three-dimensional dimensional space does not only reflect back unto it's self, but also at various angles of reflection.
         These angular second and third reflections of an axial room mode are known as tangential and oblique room modes, as shown in Fig.\ref{oblique}.
         \begin{figure}[H]
+            \centering
             \includegraphics[scale=0.375]{resources/oblique.jpg}
             \caption{An illustration of three types of room mode \cite{MODES}}
             \label{oblique}
-            \centering
         \end{figure}
         Using Excel and Eq.\ref{standing} frequency values for axial room modes on the X-Y-Z axis up to the 9\textsuperscript{th} harmonic were calculated; the full tabulated results can be found in Fig.\ref{modes}
-        \begin{figure*}[h]
+        \begin{figure*}[ht]
+            \centering
             \includegraphics[scale=0.6]{resources/modes.png}
             \caption{Table detailing axial room modes for each room}
             \label{modes}
-            \centering
         \end{figure*}
         We then moved on to the issue of dealing with the found room modes.
         The room modes with the greatest impact on the even listening field are towards the lower end of the frequency spectrum; the number of nodes in a standing wave of 5cm wavelength in a room 9m wide makes it's effect inconsequential, whereas a wave with a 4.5m wavelength will only two locations in the room where it reaches it's true peak amplitude.
@@ -144,32 +145,67 @@
         Resonant membrane absorbers are very useful in this context - they provide relatively precise targeting and attenuation of problematic frequencies.
         Eq.\ref{membrane} formulates how to solve for the depth and mass of a membrane absorber to target a certain frequency, where $d$ is depth, $m$ is mass per meter square, and $f$ is frequency:
         \begin{equation}\label{membrane}
-            f = \frac{60}{/sqrt{md}}
+            f = \frac{60}{\sqrt{md}}
         \end{equation}
         Setting $m=1\si{\kilogram\per\meter\squared}$ for ease of production allowed us to simply solve for a $d$ that would cause the membrane absorber to target the first room modes of each room:
         \begin{figure}[H]
+            \centering
             \includegraphics[scale=0.7]{resources/membrane.png}
             \caption{Table detailing the depths of membrane absorbers used to target first harmonic room modes}
             \label{membranetable}
-            \centering
         \end{figure}
 
+        \newpage
 
     \section{Noise Insulation}
-        The most effective method for preventing noise from entering a room is designing the structure of the room such that the vibrations travelling through solids and sound waves causing said unwanted noise are prevented from entering the structure.
-        This can prove challenging, as acoustic waves can travel through almost any solid of a reasonable structural thickness, and a solid structure is by far the easiest and most common way to design the built environment.
-        In anechoic chambers found in acoustic research institutes, rooms are suspended from large mass dampers within rooms, with the chamber having a completely separate set of foundations from the rest of the building. REF.
-        This construction and design, whilst incredibly effective at reducing outside noise from coming into a room, is very costly and restrictive.
-        Instead, our studio was acoustically designed with the aim of reducing outside noise, whilst still providing a familiar built environment.
-        Elements we considered included: Absorption, damping, decoupling and distance.
-        Absorption of unwanted noise can be achieved by placing acoustic insulation between each wall section, as illustrated in Fig.\ref{wallFiller}.
-        \begin{figure}[H]
-            \includegraphics[scale = 0.6]{resources/wallFiller.png}
-            \caption{Filling wall partitions with acoustic insulation \cite{UCSC}}
-            \label{wallFiller}
-            \centering
-        \end{figure}
-        Decoupling the superstructure of the building from the outside world was achieved by planning large mass dampers 'springs' into the superstructure, as seen in Fig.
+        \subsection{Introduction}
+            'Noise' can be characterized as any unpleasant or unwanted sound.
+            Typical sources of noise in the general built environment can include road traffic noise, ground vibrations from passing trains, electrical plant noise, and airplanes passing overhead.
+            It is possible, and highly likely in a recording studio environment, that the sound that one person thinks as desirable or pleasant, to be considered an extreme nuisance by another in the building.
+            
+        \subsection{Sound Reduction Index}
+            Sound reduction index (SRI) measures the ratio at which sound waves are attenuated upon transmission through a solid body \cite{REDBOOK}.
+            This reduction ratio is expressed in decibels, shown in Eq.\ref{SRI} where $W_r$ is sound energy on the receiving side of a body, and $W_s$ is the energy on the source side:
+            \begin{equation}\label{SRI}
+                SRI = 10\log{\frac{W_s}{W_r}}
+            \end{equation}
+            Sound reduction through a solid body is not constant across all frequencies.
+            Using MATLAB, SRI values across the frequency spectrum were calculated and plotted for an outside-to-inside and inside-to-inside sound transmission, as shown in Figs.\ref{MATLAB1}\&\ref{MATLAB2}:
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.6]{resources/I2ILive2Iso3.png}
+                \caption{Inside-to-inside SRI over frequency}
+                \label{MATLAB1}
+            \end{figure}
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.6]{resources/O2IControlA.png}
+                \caption{Outside-to-inside SRI over frequency}
+                \label{MATLAB2}
+            \end{figure}
+
+
+        \subsection{Methods of Insulation}
+            The most effective method for preventing noise from entering a room is designing the structure of the room such that the vibrations travelling through solids and sound waves causing said unwanted noise are prevented from entering the structure.
+            This can prove challenging, as acoustic waves can travel through almost any solid of a reasonable structural thickness, and a solid structure is by far the easiest and most common way to design the built environment.
+            In anechoic chambers found in acoustic research institutes, rooms are suspended from large mass dampers within rooms, with the chamber having a completely separate set of foundations from the rest of the building. REF.
+            This construction and design, whilst incredibly effective at reducing outside noise from coming into a room, is very costly and restrictive.
+            Instead, our studio was acoustically designed with the aim of reducing outside noise, whilst still providing a familiar built environment.
+            Elements we considered included: Absorption, damping, decoupling and distance.
+            Absorption of unwanted noise can be achieved by placing acoustic insulation between each wall section, as illustrated in Fig.\ref{wallFiller}.
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.6]{resources/wallFiller.png}
+                \caption{Filling wall partitions with acoustic insulation \cite{UCSC}}
+                \label{wallFiller}
+            \end{figure}
+            Decoupling the superstructure of the building from the outside world was achieved by planning large mass dampers ('springs') into the support structure, as seen in Fig.\ref{springs}:
+            \begin{figure}[H]
+                \centering
+                \includegraphics[scale = 0.5]{resources/springs.png}
+                \caption{Large structural springs used to decouple rooms from the superstructure}
+                \label{springs}
+            \end{figure}
 
     \section{Studio Layout}
 
